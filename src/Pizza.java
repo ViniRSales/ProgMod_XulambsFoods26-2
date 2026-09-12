@@ -106,8 +106,7 @@ public class Pizza {
      * @return TRUE se a quantidade for >=0 e o total <=8, FALSE para casos contrários.
      */
 	private boolean podeAdicionar(int quantidade) {
-        return quantidade >=0
-               && quantidade + quantidadeIngredientes <= MAXIMO_INGREDIENTES;
+        return quantidade >=0 && quantidade + quantidadeIngredientes <= MAXIMO_INGREDIENTES;
     }
 
     /**
