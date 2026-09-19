@@ -1,17 +1,41 @@
 import static org.junit.Assert.assertEquals;
+<<<<<<< HEAD
 import static org.junit.jupiter.api.Assertions.assertNull;
+=======
+import static org.junit.Assert.assertTrue;
+>>>>>>> 72fa0ee66dee0c78b6760f85ef08512e500973e4
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class PizzaTest {
 
+    Pizza pizza;
+    int ingredientesPadrao;
+
+    @BeforeEach
+    public void setUp(){
+        //Arrange
+        ingredientesPadrao = 4;
+        pizza = new Pizza(ingredientesPadrao);
+    }
+
     @Test
     public void adicionaIngredientesCorretamente(){
-        //Arrange
-        Pizza pizza = new Pizza();
-
         //Act
         int quantos = pizza.adicionarIngredientes(4);
+<<<<<<< HEAD
+=======
+
+        //Assert
+        assertEquals(8, quantos);
+    }
+
+    @Test
+    public void naoAdicionaIngredientesNegativos(){
+        //Act
+        int quantos = pizza.adicionarIngredientes(-5);
+>>>>>>> 72fa0ee66dee0c78b6760f85ef08512e500973e4
 
         //Assert
         assertEquals(4, quantos);
@@ -29,4 +53,45 @@ public class PizzaTest {
         assertNull(quantos);
     }
     
+    @Test
+    public void naoAdicionaIngredientesEmExcesso(){
+        //Act
+        int quantos = pizza.adicionarIngredientes(7);
+
+        //Assert
+        assertEquals(4, quantos);
+    }
+
+    @Test
+    public void calculaValorDaPizzaComAdicionais(){
+        //Act
+        double valor = pizza.valorFinal();
+
+        //Assert
+        assertEquals(49, valor, 0.01);
+    }
+
+    @Test
+    public void calculaValorDaPizzaSemAdicionais(){
+        //Arrange
+        Pizza pizzaVazia = new Pizza();
+        //Act
+        double valor = pizzaVazia.valorFinal();
+        //Assert
+        assertEquals(29, valor, 0.01);
+    }
+
+    @Test
+    public void cupomContemDetalhamento(){
+        //Act
+        String cupom = pizza.gerarCupom();
+
+        //Assert
+        assertTrue( 
+            cupom.contains("4 ingredientes") &&
+            cupom.contains("29,00") &&
+            cupom.contains("20,00") &&
+            cupom.contains("49,00")
+        );
+    }
 }
