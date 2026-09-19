@@ -1,10 +1,6 @@
 import static org.junit.Assert.assertEquals;
-<<<<<<< HEAD
-import static org.junit.jupiter.api.Assertions.assertNull;
-=======
 import static org.junit.Assert.assertTrue;
->>>>>>> 72fa0ee66dee0c78b6760f85ef08512e500973e4
-
+import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,18 +20,6 @@ public class PizzaTest {
     public void adicionaIngredientesCorretamente(){
         //Act
         int quantos = pizza.adicionarIngredientes(4);
-<<<<<<< HEAD
-=======
-
-        //Assert
-        assertEquals(8, quantos);
-    }
-
-    @Test
-    public void naoAdicionaIngredientesNegativos(){
-        //Act
-        int quantos = pizza.adicionarIngredientes(-5);
->>>>>>> 72fa0ee66dee0c78b6760f85ef08512e500973e4
 
         //Assert
         assertEquals(4, quantos);
