@@ -32,6 +32,7 @@ public class Pizza {
 
     private static int pizzasVendidas;
     
+    private  EBorda borda;
     private int quantidadeIngredientes;
 
     /**
@@ -50,6 +51,7 @@ public class Pizza {
 
     private void init(int adicionais) {
 		 adicionarIngredientes(adicionais);
+         borda = EBorda.TRADICIONAL;
          pizzasVendidas++;
     }
 
@@ -74,9 +76,10 @@ public class Pizza {
      * @return Double positivo com o valor da pizza.
      */
 	public double valorFinal() {
-		return PRECO_BASE + valorAdicionais();
+		return PRECO_BASE + valorAdicionais() + borda.getValor();
 	}
 
+    
 	private double valorAdicionais() {
 		return quantidadeIngredientes * VALOR_INGREDIENTE;
 	}
@@ -121,4 +124,17 @@ public class Pizza {
         }
         return quantidadeIngredientes;
 	}
+
+    /**
+     * Adiciona uma borda à pízza. Se já houver uma borda, será substituida.
+     * Em caso de borda nula, será adicionada uma borda tradicional.
+     * @param borda Borda a ser adicionada
+     * @return Preco da pizza com a borda atual.
+     */
+    public double adicionarBorda(EBorda borda){
+        if(borda == null)
+            borda = EBorda.TRADICIONAL;
+        this.borda = borda;
+        return valorFinal();
+    }
 }
